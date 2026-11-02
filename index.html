@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chocolate Bar Braza — Chocolaterie-crêperie à Brazzaville</title>
-<meta name="description" content="Chocolaterie-crêperie à Brazzaville. Découvrez nos créations, consultez la carte et commandez sur WhatsApp.">
+<meta name="description" content="Chocolaterie-crêperie à Brazzaville. Découvrez nos créations, consultez le menu digital et commandez sur WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
@@ -229,6 +229,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
 }
 @media (prefers-reduced-motion:reduce){ .rail{scroll-behavior:auto} .dcard img{transition:none} }
 .result{grid-template-columns:1fr!important;text-align:center;max-width:620px;margin:0 auto}.result .acts{justify-content:center}
+.hcta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}.btn-ghost{display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-stretch:90%;text-transform:uppercase;letter-spacing:.01em;font-size:15px;padding:16px 26px;border-radius:12px;border:2px solid var(--cacao);color:var(--cacao);text-decoration:none;background:transparent}.btn-ghost:hover{background:var(--cacao);color:#fff}
+.dmenu{text-align:center;padding:34px 16px 70px}
 </style>
 </head>
 <body>
@@ -249,7 +251,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
     </div>
     <a class="logo" href="#" aria-label="Chocolate Bar Braza, accueil">Chocolate Bar</a>
     <div class="right">
-      <a class="iconbtn" href="#carte" aria-label="Voir la carte et ma commande">
+      <a class="iconbtn" href="menu.html" aria-label="Voir le menu digital">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2.5l2.2 11h10.6l2-8H6.2"/><circle cx="9" cy="19.5" r="1.4"/><circle cx="17" cy="19.5" r="1.4"/></svg>
         <span class="count" id="cartCount">0</span>
       </a>
@@ -257,7 +259,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
   </div>
   <nav class="menu" id="menu" aria-label="Navigation principale">
     <a href="#desserts">Desserts</a>
-    <a href="#carte">La carte</a>
+    <a href="menu.html">Menu digital</a>
     <a href="#venir">Contact</a>
   </nav>
 </header>
@@ -270,7 +272,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
       <div class="copy4">
         <h1>Laissez-nous créer votre prochaine obsession.</h1>
         <p>Chocolaterie-crêperie au cœur de Brazzaville. Crêpes, gaufres, pancakes et créations nappées de chocolat, préparés sous vos yeux.</p>
-        <a class="btn-black" href="#desserts">Découvrir les créations</a>
+        <span class="hcta"><a class="btn-black" href="#desserts">Découvrir les créations</a><a class="btn-ghost" href="menu.html">Accéder au menu digital</a></span>
       </div>
       <div class="panels">
         <div class="panel">
@@ -332,18 +334,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
       <button class="arrow next" id="dNext" type="button" aria-label="Desserts suivants"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
     <div class="progress" aria-hidden="true"><i id="dThumb"></i></div>
-  </section>
-
-  <section class="carte" id="carte">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2>Toute la carte</h2>
-        <p>Crêpes, gaufres, pancakes, boissons et glaces. Ajoutez, puis envoyez en un message.</p>
-      </div>
-      <div class="tabs" role="tablist" aria-label="Catégories" id="tabs"></div>
-      <ul class="items" id="items" role="tabpanel"></ul>
-      
-    </div>
+  <p class="dmenu"><a class="btn-black" href="menu.html">Accéder au menu digital</a></p>
   </section>
 
   <section class="venir" id="venir">
@@ -382,13 +373,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
 
 <script>
 /* ---------- données ---------- */
-const MENU = {
-  "Crêpes":[["Nutella-banane","Crêpe chaude, banane fraîche",3000],["Chocolat blanc & fraise","Chocolat blanc fondu, fraises",3500],["Caramel beurre salé","Caramel maison, pointe de sel",3000],["Sucre-citron","La classique",2000]],
-  "Gaufres":[["Gaufre chocolat noir","Chocolat noir fondu, croquante",3500],["Gaufre pralinée","Pâte de noisette, éclats de noix",3500],["Gaufre fruits rouges","Coulis et fruits frais",4000]],
-  "Pancakes":[["Pancakes sirop d'érable","Pile de trois, beurre fondu",3000],["Pancakes choco-noisette","Pâte à tartiner, noisettes",3500],["Pancakes banane-caramel","Banane poêlée, caramel",3500]],
-  "Boissons":[["Chocolat chaud","Chocolat fondu, lait chaud",2000],["Chocolat glacé","Servi frais, chantilly",2500],["Milk-shake chocolat","Épais, à la paille",3000]],
-  "Glaces":[["Coupe chocolat","Trois boules, sauce chocolat",3500],["Brownie & glace","Brownie tiède, boule vanille",4000],["Banana split","Banane, glaces, chantilly",4000]]
-};
 
 /* ---------- outils ---------- */
 const fmt = n => n.toLocaleString("fr-FR").replace(/[\u202f\u00a0]/g," ") + " FCFA";
@@ -407,7 +391,7 @@ function renderBasket(){
   const count = entries.reduce((s,[,v])=>s+v.qty,0);
   const total = entries.reduce((s,[,v])=>s+v.qty*v.price,0);
   setCart(count);
-  document.getElementById("basketSum").textContent = `${count} article${count>1?"s":""} dans ma commande`;
+  document.getElementById("basketSum").textContent = `${count} article${count>1?"s":""}`;
   const lines = entries.map(([n,v])=>`- ${v.qty} x ${n}`).join("\n");
   const msg = `Bonjour Chocolate Bar, je souhaite commander :\n${lines}`;
   document.getElementById("basketGo").href = "https://wa.me/242064141414?text=" + encodeURIComponent(msg);
@@ -418,29 +402,6 @@ document.getElementById("clear").addEventListener("click",()=>{
 });
 
 
-/* ---------- carte complète ---------- */
-const CATS = Object.keys(MENU);
-let active = CATS[0];
-const tabs = document.getElementById("tabs"), itemsEl = document.getElementById("items");
-function renderMenu(){
-  tabs.innerHTML = ""; itemsEl.innerHTML = "";
-  CATS.forEach(cat=>{
-    const t = document.createElement("button");
-    t.type="button"; t.className="tab"; t.setAttribute("role","tab"); t.textContent=cat;
-    t.setAttribute("aria-selected", cat===active);
-    t.addEventListener("click",()=>{ active=cat; renderMenu(); });
-    tabs.appendChild(t);
-  });
-  MENU[active].forEach(([name,desc,price])=>{
-    const li = document.createElement("li"); li.className="item";
-    li.innerHTML = `<div><h3>${name}</h3><p>${desc}</p></div>`;
-    const b = document.createElement("button");
-    b.type="button"; b.className="plus"; b.textContent="+"; b.setAttribute("aria-label","Ajouter "+name);
-    b.addEventListener("click",()=>add(name,price));
-    li.appendChild(b); itemsEl.appendChild(li);
-  });
-}
-renderMenu();
 
 /* ---------- hero : vidéo ---------- */
 const video = document.getElementById("heroVideo");
