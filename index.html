@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chocolate Bar Braza — Chocolaterie-crêperie à Brazzaville</title>
-<meta name="description" content="Chocolaterie-crêperie à Brazzaville. Découvrez nos créations, trouvez la douceur qui vous ressemble et commandez sur WhatsApp.">
+<meta name="description" content="Chocolaterie-crêperie à Brazzaville. Découvrez nos créations, consultez la carte et commandez sur WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
@@ -119,6 +119,7 @@ nav.menu a:hover{border-color:var(--framboise-2)}
 .note{margin-top:20px;font-size:13px;opacity:.55}
 
 /* ---------- venir ---------- */
+.mapbox{border-radius:26px;overflow:hidden;min-height:380px;box-shadow:0 30px 60px -40px rgba(42,21,16,.5);background:#e9dccd}.mapbox iframe{display:block;width:100%;height:100%;min-height:380px;border:0}.mapl{margin-top:30px}.venir dd a{text-decoration:underline;text-underline-offset:3px}
 .venir{background:var(--ivoire);color:var(--noir);padding:110px 0}
 .venir .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 .venir h2{font-family:var(--display);font-weight:400;font-size:clamp(36px,5vw,60px);line-height:1;margin-bottom:30px}
@@ -256,10 +257,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
   </div>
   <nav class="menu" id="menu" aria-label="Navigation principale">
     <a href="#desserts">Desserts</a>
-    <a href="#douceur">Ma douceur</a>
     <a href="#carte">La carte</a>
     <a href="#venir">Contact</a>
-    <a href="https://wa.me/242064141414?text=Bonjour%20Chocolate%20Bar%2C%20j%27aimerais%20passer%20une%20commande." target="_blank" rel="noopener">Commander</a>
   </nav>
 </header>
 
@@ -335,16 +334,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
     <div class="progress" aria-hidden="true"><i id="dThumb"></i></div>
   </section>
 
-  <section class="douceur" id="douceur">
-    <div class="wrap">
-      <div>
-        <h2>Quelle douceur vous ressemble ?</h2>
-        <p class="lead">Cinq questions, une recommandation. Pas de bonne ou de mauvaise réponse, seulement celle qui vous correspond.</p>
-      </div>
-      <div class="stage" id="stage" aria-live="polite"></div>
-    </div>
-  </section>
-
   <section class="carte" id="carte">
     <div class="wrap">
       <div class="sec-head">
@@ -363,15 +352,14 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
         <h2>Nous trouver</h2>
         <dl>
           <div><dt>Adresse</dt><dd>67 avenue Nelson Mandela, Brazzaville</dd></div>
-          <div><dt>Téléphone</dt><dd><a href="tel:+242064141414">+242 06 414 1414</a></dd></div>
+          <div><dt>WhatsApp</dt><dd><a href="https://wa.me/242064141414?text=Bonjour%20Chocolate%20Bar%2C%20j%27aimerais%20passer%20une%20commande." target="_blank" rel="noopener">+242 06 414 1414</a></dd></div>
           <div><dt>Horaires</dt><dd>À confirmer avec Chocolate Bar</dd></div>
           <div><dt>Facebook</dt><dd><a href="https://www.facebook.com/chocolatebarbrazaville/" target="_blank" rel="noopener">Chocolate Bar Braza</a></dd></div>
         </dl>
+        <p class="mapl"><a class="btn btn-dark" href="https://www.google.com/maps/search/?api=1&query=67+avenue+Nelson+Mandela,+Brazzaville,+Congo" target="_blank" rel="noopener">Ouvrir dans Google Maps</a></p>
       </div>
-      <div class="cta">
-        <h3>Une envie de chocolat ?</h3>
-        <p>Écrivez-nous sur WhatsApp : nous préparons, vous passez récupérer.</p>
-        <a class="btn btn-light" href="https://wa.me/242064141414?text=Bonjour%20Chocolate%20Bar%2C%20j%27aimerais%20passer%20une%20commande." target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+      <div class="mapbox">
+        <iframe title="Carte Google Maps : Chocolate Bar, 67 avenue Nelson Mandela, Brazzaville" src="https://maps.google.com/maps?q=67+avenue+Nelson+Mandela,+Brazzaville,+Congo&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       </div>
     </div>
   </section>
@@ -394,58 +382,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
 
 <script>
 /* ---------- données ---------- */
-const CREATIONS = [
-  {id:"noir",name:"Noir Absolu",price:4500,shape:"round",top:"drip",glaze:"#1f0d08",
-   desc:"Gâteau fondant au chocolat noir, ganache et croustillant cacao.",
-   why:"Vous aimez l'intensité sans bruit. Le Noir Absolu est dense, élégant, et se savoure lentement.",
-   layers:[["Sablé cacao","#8a5640",16],["Mousse chocolat noir","#6a3624",26],["Cœur de ganache","#a2602f",12],["Biscuit moelleux","#5a2c1d",22],["Glaçage miroir","#2a120b",10]]},
-  {id:"blanche",name:"Blanche Fraise",price:4000,shape:"round",top:"berries",
-   desc:"Crêpes dorées, crème au chocolat blanc et fraises fraîches.",
-   why:"Légèreté et lumière : la Blanche Fraise a la fraîcheur d'une belle journée.",
-   layers:[["Crêpe dorée","#e1b676",10],["Crème chocolat blanc","#f6ead8",14],["Coulis de fraise","#d9496b",8],["Crêpe dorée","#e1b676",10],["Crème chocolat blanc","#f6ead8",14],["Crêpe dorée","#e1b676",10]]},
-  {id:"pralin",name:"Praliné Doré",price:4000,shape:"iso",top:"nuts",
-   desc:"Gaufre croustillante, praliné noisette et éclats caramélisés.",
-   why:"Curieux, vous aimez qu'une texture en cache une autre. La gaufre pralinée croque, puis fond.",
-   layers:[["Gaufre croustillante","#dba35f",20],["Praliné noisette","#9a5b2f",12],["Gaufre croustillante","#dba35f",20]]},
-  {id:"caramel",name:"Caramel Salé",price:3500,shape:"round",top:"drip",glaze:"#d0792a",
-   desc:"Pancakes moelleux, caramel au beurre salé et fleur de sel.",
-   why:"Chaleureux et généreux : les pancakes au caramel salé sont un câlin en trois étages.",
-   layers:[["Pancake","#e6b873",16],["Caramel beurre salé","#c8742a",7],["Pancake","#e6b873",16],["Caramel beurre salé","#c8742a",7],["Pancake","#e6b873",16]]},
-  {id:"brownie",name:"Brownie Tiède",price:4500,shape:"iso",top:"scoop",glaze:"#2a120b",
-   desc:"Brownie fondant, sauce chocolat chaud et boule vanille.",
-   why:"Spontané et gourmand : le brownie tiède, glace vanille, c'est le contraste que vous cherchez.",
-   layers:[["Base croquante","#7a452c",12],["Brownie fondant","#4b2418",34]]}
-];
-const BYID = Object.fromEntries(CREATIONS.map(c=>[c.id,c]));
-
-const QUIZ = [
-  {q:"Votre dimanche idéal ressemble à…",a:[
-    ["Un livre, du silence, une tasse",{noir:2,brownie:1}],
-    ["Un brunch qui s'éternise entre amis",{blanche:2,pralin:1}],
-    ["Une balade sans plan précis",{pralin:2,blanche:1}],
-    ["Un film sous un plaid",{caramel:2,brownie:1}]]},
-  {q:"Quel trait vous décrit le mieux ?",a:[
-    ["L'élégance discrète",{noir:2,blanche:1}],
-    ["La curiosité",{pralin:2,caramel:1}],
-    ["La générosité",{caramel:2,brownie:1}],
-    ["La spontanéité",{brownie:2,pralin:1}]]},
-  {q:"Côté texture, vous préférez…",a:[
-    ["Fondante, qui s'abandonne",{noir:2,brownie:1}],
-    ["Croustillante, qui répond",{pralin:2,brownie:1}],
-    ["Légère, presque aérienne",{blanche:2,caramel:1}],
-    ["Moelleuse, enveloppante",{caramel:2,noir:1}]]},
-  {q:"Le cadre parfait ?",a:[
-    ["Une lumière tamisée",{noir:2,caramel:1}],
-    ["Une terrasse ensoleillée",{blanche:2,pralin:1}],
-    ["Une table pleine de rires",{brownie:2,pralin:1}],
-    ["La pluie derrière la vitre",{caramel:2,noir:1}]]},
-  {q:"Pour vous, le chocolat c'est…",a:[
-    ["Une intensité",{noir:2,brownie:1}],
-    ["Une douceur",{blanche:2,caramel:1}],
-    ["Un jeu",{pralin:2,brownie:1}],
-    ["Un réconfort",{caramel:2,brownie:1}]]}
-];
-
 const MENU = {
   "Crêpes":[["Nutella-banane","Crêpe chaude, banane fraîche",3000],["Chocolat blanc & fraise","Chocolat blanc fondu, fraises",3500],["Caramel beurre salé","Caramel maison, pointe de sel",3000],["Sucre-citron","La classique",2000]],
   "Gaufres":[["Gaufre chocolat noir","Chocolat noir fondu, croquante",3500],["Gaufre pralinée","Pâte de noisette, éclats de noix",3500],["Gaufre fruits rouges","Coulis et fruits frais",4000]],
@@ -456,73 +392,6 @@ const MENU = {
 
 /* ---------- outils ---------- */
 const fmt = n => n.toLocaleString("fr-FR").replace(/[\u202f\u00a0]/g," ") + " FCFA";
-function mix(hex,target,t){
-  const p = h => [1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
-  const a = p(hex), b = p(target);
-  return "#" + a.map((v,i)=>Math.round(v+(b[i]-v)*t).toString(16).padStart(2,"0")).join("");
-}
-const light = (h,t=.22)=>mix(h,"#ffffff",t);
-const dark = (h,t=.28)=>mix(h,"#000000",t);
-
-/* ---------- dessin des créations (vue éclatée) ---------- */
-function drawCreation(c){
-  const cx=150, y0=250;
-  let cum=0, out="";
-  const n=c.layers.length;
-  out += `<ellipse cx="${cx}" cy="${y0+14}" rx="120" ry="20" fill="rgba(0,0,0,.4)"/>`;
-  let yTopFinal=0;
-  c.layers.forEach(([name,col,h],i)=>{
-    const yBot=y0-cum, yTop=yBot-h; cum+=h;
-    yTopFinal=yTop;
-    if(c.shape==="round"){
-      const rx=100, ry=28;
-      out += `<g class="layer" style="--i:${i}">
-        <ellipse cx="${cx}" cy="${yBot}" rx="${rx}" ry="${ry}" fill="${dark(col,.12)}"/>
-        <rect x="${cx-rx}" y="${yTop}" width="${rx*2}" height="${h}" fill="${col}"/>
-        <rect x="${cx-rx}" y="${yTop}" width="${rx*2}" height="${h}" fill="url(#shade)"/>
-        <ellipse cx="${cx}" cy="${yTop}" rx="${rx}" ry="${ry}" fill="${light(col,.2)}" stroke="rgba(0,0,0,.18)"/>
-      </g>`;
-    } else {
-      const hw=84, hh=42;
-      out += `<g class="layer" style="--i:${i}">
-        <polygon points="${cx-hw},${yTop} ${cx},${yTop+hh} ${cx},${yTop+hh+h} ${cx-hw},${yTop+h}" fill="${dark(col,.22)}"/>
-        <polygon points="${cx+hw},${yTop} ${cx},${yTop+hh} ${cx},${yTop+hh+h} ${cx+hw},${yTop+h}" fill="${dark(col,.06)}"/>
-        <polygon points="${cx},${yTop-hh} ${cx+hw},${yTop} ${cx},${yTop+hh} ${cx-hw},${yTop}" fill="${light(col,.2)}" stroke="rgba(0,0,0,.18)"/>
-      </g>`;
-    }
-  });
-  // décor du dessus
-  const yT=yTopFinal;
-  let deco="";
-  if(c.top==="drip"){
-    const g=c.glaze, rx=100, ry=28;
-    deco += `<ellipse cx="${cx}" cy="${yT}" rx="${rx-5}" ry="${ry-3}" fill="${g}"/>`;
-    [[-62,26],[-14,38],[40,22],[78,30]].forEach(([dx,len])=>{
-      const ey=yT+ry*Math.sqrt(1-Math.pow(dx/rx,2))-2;
-      deco += `<rect x="${cx+dx-7}" y="${ey-4}" width="14" height="${len}" rx="7" fill="${g}"/>`;
-    });
-    deco += `<ellipse cx="${cx-30}" cy="${yT-6}" rx="26" ry="5" fill="rgba(255,255,255,.22)"/>`;
-  } else if(c.top==="berries"){
-    [[118,-2,15],[152,-12,17],[184,0,14]].forEach(([x,dy,r])=>{
-      deco += `<g><circle cx="${x}" cy="${yT+dy}" r="${r}" fill="#d12a52"/><circle cx="${x-r*.3}" cy="${yT+dy-r*.3}" r="${r*.28}" fill="rgba(255,255,255,.4)"/><path d="M${x-7},${yT+dy-r+2} L${x},${yT+dy-r-8} L${x+7},${yT+dy-r+2} Z" fill="#3f7a3a"/></g>`;
-    });
-  } else if(c.top==="nuts"){
-    [[-40,-6,-20],[-8,10,12],[30,-8,28],[52,6,-8],[-60,8,10],[8,-14,-30]].forEach(([dx,dy,r])=>{
-      deco += `<rect x="${cx+dx-9}" y="${yT+dy-6}" width="18" height="11" rx="5" fill="#b87a3c" transform="rotate(${r} ${cx+dx} ${yT+dy})"/><rect x="${cx+dx-6}" y="${yT+dy-5}" width="8" height="3" rx="1.5" fill="rgba(255,255,255,.3)" transform="rotate(${r} ${cx+dx} ${yT+dy})"/>`;
-    });
-  } else if(c.top==="scoop"){
-    deco += `<ellipse cx="${cx}" cy="${yT+4}" rx="52" ry="18" fill="${c.glaze}"/>
-      <circle cx="${cx}" cy="${yT-22}" r="34" fill="#f5e7c8"/>
-      <path d="M${cx-34},${yT-14} q34,26 68,0 q-4,12 -34,16 q-30,-4 -34,-16z" fill="#e8d4a8"/>
-      <ellipse cx="${cx-12}" cy="${yT-36}" rx="12" ry="7" fill="rgba(255,255,255,.55)"/>`;
-  }
-  out += `<g class="layer" style="--i:${n}">${deco}</g>`;
-  return `<svg viewBox="0 0 300 320" role="img" aria-label="${c.name}, vue éclatée">
-    <defs><linearGradient id="shade" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".28"/><stop offset=".35" stop-color="#000" stop-opacity="0"/><stop offset=".7" stop-color="#fff" stop-opacity=".05"/><stop offset="1" stop-color="#000" stop-opacity=".3"/></linearGradient></defs>
-    ${out}</svg>`;
-}
-const compo = c => c.layers.map(l=>l[0]).map((n,i)=>i?n[0].toLowerCase()+n.slice(1):n).join(", ") + ".";
-
 /* ---------- commande WhatsApp ---------- */
 const basket = {};
 function add(name,price){
@@ -548,48 +417,6 @@ document.getElementById("clear").addEventListener("click",()=>{
   Object.keys(basket).forEach(k=>delete basket[k]); renderBasket();
 });
 
-
-/* ---------- test « Quelle douceur vous ressemble ? » ---------- */
-const stage = document.getElementById("stage");
-let qi = 0, scores = {};
-function renderQuestion(){
-  const q = QUIZ[qi];
-  stage.innerHTML = `<div class="fade-in">
-    <div class="prog"><i style="width:${(qi/QUIZ.length)*100}%"></i></div>
-    <p class="step">Question ${qi+1} sur ${QUIZ.length}</p>
-    <h3>${q.q}</h3>
-    <div class="opts"></div></div>`;
-  requestAnimationFrame(()=>{ const bar=stage.querySelector(".prog i"); if(bar) bar.style.width = ((qi+1)/QUIZ.length*100)+"%"; });
-  const opts = stage.querySelector(".opts");
-  q.a.forEach(([label,pts])=>{
-    const b = document.createElement("button");
-    b.type="button"; b.className="opt"; b.textContent=label;
-    b.addEventListener("click",()=>{
-      Object.entries(pts).forEach(([id,v])=>scores[id]=(scores[id]||0)+v);
-      qi++;
-      qi<QUIZ.length ? renderQuestion() : renderResult();
-    });
-    opts.appendChild(b);
-  });
-}
-function renderResult(){
-  const order = CREATIONS.map(c=>c.id);
-  const best = order.reduce((a,id)=>(scores[id]||0)>(scores[a]||0)?id:a, order[0]);
-  const c = BYID[best];
-  stage.innerHTML = `<div class="fade-in result">
-    <div>
-      <p class="kicker">Votre douceur</p>
-      <h3>${c.name}</h3>
-      <p class="why">${c.why}</p>
-      <div class="acts">
-        <button class="btn btn-dark" type="button" id="qAdd">Ajouter à ma commande</button>
-        <button class="btn btn-ink" type="button" id="qRedo">Refaire le test</button>
-      </div>
-    </div></div>`;
-  document.getElementById("qAdd").addEventListener("click",()=>add(c.name,c.price));
-  document.getElementById("qRedo").addEventListener("click",()=>{ qi=0; scores={}; renderQuestion(); });
-}
-renderQuestion();
 
 /* ---------- carte complète ---------- */
 const CATS = Object.keys(MENU);
